@@ -1,0 +1,52 @@
+$main-color: #2B3151;
+$secondary-color: rgb(167, 214, 245);
+$tertiary-color: #fff;
+$quarter-color:rgba(34,193,195,1);
+$aux-color: #343D65;
+
+@mixin flexRow($justify) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin flexColumn($justify) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin absoluteRightTop($right, $top) {
+  position: absolute;
+  right: $right;
+  top: $top;
+}
+
+@mixin absoluteLeftTop($left, $top) {
+  position: absolute;
+  left: $left;
+  top: $top;
+}
+
+@mixin text($fontSize, $color) {
+  font-size: $fontSize;
+  color: $color;
+  text-align: center;
+  font-family: Bebas Neue;
+}
+
+@mixin iconBg($height, $width, $borderRadius, $background) {
+  height: $height;
+  width: $width;
+  border-radius: $borderRadius;
+  background: $background;
+  border: none;
+  outline: none;
+}
+
+@mixin mainPage($height, $width, $background) {
+  height: $height;
+  width: $width;
+  background: $background;
+}
