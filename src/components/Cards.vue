@@ -26,9 +26,6 @@
 import { mapState } from "vuex";
 import { TypesMixin } from "@/mixins/TypesMixin";
 export default {
-  created() {
-    this.getPokemonCards();
-  },
   computed: {
     ...mapState(["pokemons"])
   },
@@ -56,6 +53,31 @@ export default {
     position: relative;
     transition: 0.5s;
     min-width: 200px;
+    &:hover {
+      transform: scale(1.1);
+    }
+    & > img {
+      width: 100%;
+    }
+    div {
+      @include flexColumn(center);
+      width: 75%;
+      p {
+        color: $tertiary-color;
+        text-align: center;
+        &:first-child {
+          font-size: 2rem;
+        }
+        &:last-child {
+          font-size: 1rem;
+        }
+      }
+      img {
+        width: 40px;
+        @include absoluteRightTop(5px, 5px);
+        filter: drop-shadow(0 0 5px) invert(90%);
+      }
+    }
   }
 }
 

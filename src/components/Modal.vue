@@ -1,6 +1,6 @@
 <template>
-  <div class="main">
-    <button class="exit">
+  <div class="modal">
+    <button @click="showModal" class="exit">
       <font-awesome-icon icon="times" color="#fff" />
     </button>
     <div class="attackInfo">
@@ -13,16 +13,17 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   computed: mapState(["attack"]),
+  methods: mapActions(["showModal"])
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../../sass_utilities/variables";
 
-.main {
+.modal {
   @include absoluteLeftTop(50%, 50%);
   background: $quarter-color;
   border-radius: 40px;

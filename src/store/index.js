@@ -15,7 +15,8 @@ export default new Vuex.Store({
     },
     attacks: [],
     showModal: false,
-    attack: null
+    attack: null,
+    isLoading: false
   },
   mutations: {
     SAVE_POKEMON_CARDS(state, data) {
@@ -44,19 +45,32 @@ export default new Vuex.Store({
     },
     SET_ATTACK(state, data) {
       state.attack = state.attacks.find(attack => attack.name === data);
+    },
+    SWITCH_IS_LOADING(state) {
+      state.isLoading = !state.isLoading;
     }
   },
   actions: {
-    getPokemonCards({ commit }) {
-      getAllPokemons().then(({ data: { cards } }) =>
-        commit("SAVE_POKEMON_CARDS", cards)
-      );
+    getPokemonCards({ commit, dispatch }) {
+      dispatch("switchIsLoading", null, { root: true });
+      getAllPokemons().then(({ data: { cards } }) => {
+        commit("SAVE_POKEMON_CARDS", cards);
+        dispatch("switchIsLoading", null, { root: true });
+      });
     },
-    getPokemonCardById({ commit }, id) {
+    getPokemonCardById({ commit, dispatch, state }, id) {
+      console.log(state.isLoading);
+      dispatch("switchIsLoading", null, { root: true });
+      console.log(state.isLoading);
+
       commit("SAVE_POKEMON_CARD_DETAILS", { types: [] });
       getPokemonById(id).then(({ data: { card } }) => {
         commit("SAVE_POKEMON_CARD_DETAILS", card);
         commit("SAVE_POKEMON_ATTACKS", card.attacks);
+        console.log(state.isLoading);
+
+        dispatch("switchIsLoading", null, { root: true });
+        console.log(state.isLoading);
       });
     },
     typePokemon({ commit }, pokemonName) {
@@ -68,23 +82,21 @@ export default new Vuex.Store({
     },
     setAttack({ commit }, attack) {
       commit("SET_ATTACK", attack);
+    },
+    switchIsLoading({ commit }) {
+      commit("SWITCH_IS_LOADING");
     }
   },
   getters: {
     getColor: state => {
       const type = state.pokemonDetails.types;
-      console.log(type);
       const color = type
         ? pokeTypes.find(pType => pType.type === type).color
         : "#faf";
-      // console.log(type)
-      // console.log(pokeTypes.find(pType => pType.type === type).color)
-      console.log(color);
       return color;
     },
     getTypeIcon: state => {
       const type = state.pokemonDetails.types[0];
-      console.log(pokeTypes.find(pType => pType.type === type).src);
       return pokeTypes.find(pType => pType.type === type).src;
     },
     getWeakIcon: state => {

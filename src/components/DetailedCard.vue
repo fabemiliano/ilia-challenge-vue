@@ -29,10 +29,10 @@ import pokeTypes from "@/assets/pokeTypes";
 export default {
   methods: {
     openModal(e) {
-      this.showModal;
-      this.setAttack(e)
+      this.showModal();
+      this.setAttack(e);
     },
-    ...mapActions(["getPokemonCardById, showModal", "setAttack"]),
+    ...mapActions(["getPokemonCardById", "showModal", "setAttack"])
   },
   computed: {
     types() {
@@ -41,13 +41,13 @@ export default {
     },
     color() {
       const type = this.pokemonDetails.types[0];
-      const teste = pokeTypes.find((ptype) => ptype.type === type);
+      const teste = pokeTypes.find(ptype => ptype.type === type);
       const color = teste ? teste.color : "trasparent";
       return color;
     },
     ...mapGetters(["getColor", "getTypeIcon", "getWeakIcon"]),
-    ...mapState(["pokemonDetails"]),
-  },
+    ...mapState(["pokemonDetails"])
+  }
 };
 </script>
 

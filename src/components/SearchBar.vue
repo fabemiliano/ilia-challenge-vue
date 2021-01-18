@@ -2,7 +2,7 @@
   <div class="search">
     <input
       type="text"
-      placeholder="search pokemon"
+      :placeholder="$t('placeholder')"
       :value="pokemonTyped"
       @input="typePokemonInInput"
     />
@@ -22,9 +22,6 @@ export default {
     typePokemonInInput(e) {
       this.$store.dispatch("typePokemon", e.target.value);
     }
-  },
-  updated() {
-    this.typePokemon(this.pokemonTyped);
   }
 };
 </script>

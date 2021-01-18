@@ -1,13 +1,16 @@
 <template>
-  <div class="main">
-    <BackButton />
-    <Header />
-    <div class="container">
-      <img :src="pokemonDetails.imageUrlHiRes" alt="" />
-      <DetailedCard />
+  <div v-if="!isLoading">
+    <div :style="{ filter: style }" class="main">
+      <BackButton />
+      <Header />
+      <div class="container">
+        <img :src="pokemonDetails.imageUrlHiRes" alt="" />
+        <DetailedCard />
+      </div>
     </div>
-    <Modal />
+    <Modal v-if="showModal" />
   </div>
+  <Loading v-else />
 </template>
 
 <script>
@@ -21,18 +24,26 @@ export default {
     DetailedCard,
     BackButton,
     Header,
-    Modal
+    Modal,
   },
   props: {
     id: {
-      type: String
-    }
+      type: String,
+    },
   },
   methods: mapActions(["getPokemonCardById"]),
   created() {
     this.getPokemonCardById(this.id);
   },
-  computed: mapState(["pokemonDetails"])
+  computed: {
+    style() {
+      const ret = this.showModal ? "blur(10px)" : "blur(0)";
+      console.log(ret);
+      return ret;
+      // return this.showModal ? "10px" : 0;
+    },
+    ...mapState(["pokemonDetails", "showModal", "isLoading"]),
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
-  <div class="arrowLeft">
+  <router-link :to="{ name: 'home' }" class="arrowLeft">
     <font-awesome-icon icon="arrow-left"></font-awesome-icon>
-  </div>
+  </router-link>
 </template>
 
 <script>
