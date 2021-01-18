@@ -6,8 +6,8 @@
     <div class="attackInfo">
       <p>{{ attack.name }}</p>
       <p>Mana: -{{ attack.convertedEnergyCost }}</p>
-      <p>Damage: {{ attack.damage }}</p>
-      <p>Description: {{ attack.text }}</p>
+      <p>{{ $t("damage") }}: {{ attack.damage }}</p>
+      <p>{{ $t("description") }}: {{ attack.text }}</p>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@
 import { mapState, mapActions } from "vuex";
 export default {
   computed: mapState(["attack"]),
-  methods: mapActions(["showModal"])
+  methods: mapActions(["showModal"]),
 };
 </script>
 

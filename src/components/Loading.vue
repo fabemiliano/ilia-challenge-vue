@@ -13,7 +13,7 @@
 export default {
   computed: {
     word() {
-      const loading = "Loading";
+      const loading = this.$t("loading");
       return loading.split("");
     }
   }
