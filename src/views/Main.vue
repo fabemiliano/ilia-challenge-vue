@@ -34,17 +34,16 @@ export default {
 @import "../../sass_utilities/variables";
 
 .main {
+  @include flexColumn(flex-start);
   @include mainPage(
     100vh,
     100%,
     linear-gradient(0deg, $quarter-color 0%, $main-color 100%)
   );
-  overflow: scroll;
   .nav {
-    @include flexColumn(space-between);
-    width: 90%;
-    margin: auto;
+    @include flexRow(space-between);
     margin-top: 40px;
+    width: 90%;
     h1 {
       color: $secondary-color;
       font-family: Pokemon;

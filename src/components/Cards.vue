@@ -27,9 +27,9 @@ import { mapState } from "vuex";
 import { TypesMixin } from "@/mixins/TypesMixin";
 export default {
   computed: {
-    ...mapState(["pokemons"])
+    ...mapState(["pokemons"]),
   },
-  mixins: [TypesMixin]
+  mixins: [TypesMixin],
 };
 </script>
 

@@ -31,6 +31,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 10px;
+
   .logo {
     position: relative;
     transition: 0.5s;
