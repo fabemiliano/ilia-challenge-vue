@@ -2,7 +2,7 @@
   <div class="container">
     <router-link
       class="card"
-      :to="{ name: 'details', params: { id: pokemon.id } }"
+      :to="{ name: 'details', params: { id: pokemon.id, teste: 'teste' } }"
       v-for="pokemon in pokemons"
       :key="pokemon.id"
       :style="{ backgroundColor: typeColor(pokemon) }"
@@ -27,9 +27,9 @@ import { mapState } from "vuex";
 import { TypesMixin } from "@/mixins/TypesMixin";
 export default {
   computed: {
-    ...mapState(["pokemons"]),
+    ...mapState(["pokemons"])
   },
-  mixins: [TypesMixin],
+  mixins: [TypesMixin]
 };
 </script>
 

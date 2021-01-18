@@ -3,7 +3,9 @@
     <div class="main">
       <img :src="require('@/assets/pokeball.png')" />
       <div>
-        <span v-for="letter in word" :key="letter">{{ letter }}</span>
+        <span v-for="(letter, index) in word" :key="letter + index">{{
+          letter
+        }}</span>
       </div>
     </div>
   </div>
@@ -15,8 +17,8 @@ export default {
     word() {
       const loading = this.$t("loading");
       return loading.split("");
-    }
-  }
+    },
+  },
 };
 </script>
 

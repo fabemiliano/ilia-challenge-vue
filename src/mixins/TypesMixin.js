@@ -8,7 +8,7 @@ export const TypesMixin = {
         ? pokeTypes.find(pType => {
             return pType.type === pokemon.types[0];
           })
-        : { color: "#ffa" };
+        : { color: "#E8DDD8" };
       return typeProperties.color;
     },
 

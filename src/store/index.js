@@ -20,7 +20,9 @@ export default new Vuex.Store({
   },
   mutations: {
     SAVE_POKEMON_CARDS(state, data) {
-      state.pokemons = data.sort((a, b) => (a.name > b.name ? 1 : -1));
+      state.pokemons = data
+        .filter(({ types }) => types)
+        .sort((a, b) => (a.name > b.name ? 1 : -1));
       state.closedPokemonsArray = data.sort((a, b) =>
         a.name > b.name ? 1 : -1
       );
@@ -58,19 +60,13 @@ export default new Vuex.Store({
         dispatch("switchIsLoading", null, { root: true });
       });
     },
-    getPokemonCardById({ commit, dispatch, state }, id) {
-      console.log(state.isLoading);
+    getPokemonCardById({ commit, dispatch }, id) {
       dispatch("switchIsLoading", null, { root: true });
-      console.log(state.isLoading);
-
       commit("SAVE_POKEMON_CARD_DETAILS", { types: [] });
-      getPokemonById(id).then(({ data: { card } }) => {
+      return getPokemonById(id).then(({ data: { card } }) => {
         commit("SAVE_POKEMON_CARD_DETAILS", card);
         commit("SAVE_POKEMON_ATTACKS", card.attacks);
-        console.log(state.isLoading);
-
         dispatch("switchIsLoading", null, { root: true });
-        console.log(state.isLoading);
       });
     },
     typePokemon({ commit }, pokemonName) {

@@ -24,26 +24,22 @@ export default {
     DetailedCard,
     BackButton,
     Header,
-    Modal,
+    Modal
   },
-  props: {
-    id: {
-      type: String,
-    },
-  },
+  props: ["id"],
   methods: mapActions(["getPokemonCardById"]),
   created() {
-    this.getPokemonCardById(this.id);
+    this.getPokemonCardById(this.id).catch(() =>
+      this.$router.push({ name: "notFound" })
+    );
   },
   computed: {
     style() {
-      const ret = this.showModal ? "blur(10px)" : "blur(0)";
-      console.log(ret);
-      return ret;
-      // return this.showModal ? "10px" : 0;
+      const blur = this.showModal ? "blur(10px)" : "blur(0)";
+      return blur;
     },
-    ...mapState(["pokemonDetails", "showModal", "isLoading"]),
-  },
+    ...mapState(["pokemonDetails", "showModal", "isLoading"])
+  }
 };
 </script>
 
