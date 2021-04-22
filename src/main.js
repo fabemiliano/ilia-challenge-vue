@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Loading from "@/components/Loading";
 import VueI18n from "vue-i18n";
 import messages from "@/translation.js";
+import "./registerServiceWorker";
 
 Vue.use(VueI18n);
 

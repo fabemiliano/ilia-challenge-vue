@@ -17,8 +17,8 @@ export default {
     word() {
       const loading = this.$t("loading");
       return loading.split("");
-    },
-  },
+    }
+  }
 };
 </script>
 

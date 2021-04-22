@@ -1,13 +1,13 @@
 <template>
   <div class="cardInfo">
     <div class="left">
-      <p>{{$t('resistances')}}</p>
-      <p>{{$t('weaknesses')}}</p>
+      <p>{{ $t("resistances") }}</p>
+      <p>{{ $t("weaknesses") }}</p>
       <p>{{ types ? pokemonDetails.weaknesses[0].type : "" }}</p>
       <p>{{ types ? pokemonDetails.weaknesses[0].value : "" }}</p>
     </div>
     <div class="right">
-      <p>{{$t('attacks')}}</p>
+      <p>{{ $t("attacks") }}</p>
       <div class="attacks">
         <button
           :style="{ backgroundColor: color }"

@@ -16,7 +16,7 @@
 import { mapState, mapActions } from "vuex";
 export default {
   computed: mapState(["attack"]),
-  methods: mapActions(["showModal"]),
+  methods: mapActions(["showModal"])
 };
 </script>
 
